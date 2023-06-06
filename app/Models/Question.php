@@ -28,4 +28,9 @@ class Question extends Model
     protected $casts = [
         'difficulty' => QuestionDifficultyEnum::class,
     ];
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }

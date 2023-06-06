@@ -19,7 +19,17 @@ defineProps({
 const form = useForm({
     content: "",
     difficulty: "medium",
+    answers: [
+        { content: "", is_correct: false },
+        { content: "", is_correct: false },
+        { content: "", is_correct: false },
+        { content: "", is_correct: false },
+    ],
 });
+
+const addNewAnswer = () => {
+    form.answers.push({ content: "", is_correct: false });
+};
 
 const submit = () => {
     form.post(route("questions.store"), {});
@@ -66,6 +76,27 @@ const submit = () => {
 
                 <InputError class="mt-2" :message="form.errors.difficulty" />
             </div>
+
+            {{ form.errors.answers }}
+
+            <div v-for="(answer, index) in form.answers" :key="index">
+                <label :for="'answer-' + index">Answer {{ index + 1 }}:</label>
+                <input
+                    :id="'answer-' + index"
+                    type="text"
+                    v-model="answer.content"
+                />
+
+                <label :for="'is-correct-' + index">Is Correct:</label>
+                <input
+                    :id="'is-correct-' + index"
+                    type="checkbox"
+                    v-model="answer.is_correct"
+                />
+                <InputError class="mt-2" :message="form.errors['answers.' + index + '.content']" />
+            </div>
+
+            <button @click="addNewAnswer">Add Answer</button>
 
             <div class="flex items-center justify-end mt-4">
                 <PrimaryButton

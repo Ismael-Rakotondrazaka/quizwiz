@@ -30,12 +30,15 @@ class QuestionController extends Controller
      */
     public function store(StoreQuestionRequest $request)
     {
-        $validated = $request->safe()->only(['content', 'difficulty']);
+
+        $validated = $request->safe()->only(['content', 'difficulty', 'answers']);
 
         $question = Question::create([
             'content' => $validated['content'],
             'difficulty' => $validated['difficulty'],
         ]);
+
+        $question->answers()->createMany($validated['answers']);
 
         return redirect()->route('questions.create');
     }
