@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -58,6 +59,17 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
                     );
                 }
             );
+        });
+
+        Route::prefix('/{question}/answers')->group(function () {
+            Route::name('answers.')->group(function () {
+                Route::controller(AnswerController::class)->group(
+                    function () {
+                        Route::get('/create', 'create')->name('create');
+                        Route::post('/store', 'store')->name('store');
+                    }
+                );
+            });
         });
     });
 });
