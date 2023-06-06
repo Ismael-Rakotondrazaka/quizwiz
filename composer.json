@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "quizwiz/quizwiz",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "quizwiz",
+    "keywords": ["quiz", "quizwiz"],
     "license": "MIT",
     "require": {
         "php": "^8.1",
