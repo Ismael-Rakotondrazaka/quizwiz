@@ -14,7 +14,12 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        $questionsPaginated = Question::paginate(40);
+        $questionsPaginated->onEachSide(2)->links();
+
+        return Inertia::render('Questions/IndexQuestion', [
+            'questionsPaginated' => $questionsPaginated,
+        ]);
     }
 
     /**
