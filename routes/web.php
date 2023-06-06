@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,6 +40,14 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Admin/Dashboard');
     })->name('admin.dashboard');
+
+    Route::prefix('/questions')->group(function () {
+        Route::get('/create', function () {
+            return Inertia::render('Questions/CreateQuestion');
+        })->name('questions.create');
+
+        Route::post('/store', [QuestionController::class, 'store'])->name('questions.store');
+    });
 });
 
 require __DIR__.'/auth.php';
