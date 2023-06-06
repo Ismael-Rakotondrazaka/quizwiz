@@ -8,7 +8,6 @@ use App\Models\Answer;
 use App\Models\Question;
 use App\Rules\MinCorrectAnswerRule;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class AnswerController extends Controller
@@ -105,10 +104,48 @@ class AnswerController extends Controller
     }
 
     /**
+     * Show the form for deleting the specified resource.
+     */
+    public function delete(Question $question, Answer $answer)
+    {
+        return Inertia::render('Answers/DeleteAnswer', [
+            'question' => $question,
+            'answer' => $answer,
+        ]);
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Answer $answer)
+    public function destroy(Question $question, Answer $answer)
     {
-        //
+        $minCorrectAnswerValidator = Validator::make($answer->getOriginal(), [
+            'is_correct' => [function ($attribute, $value, $fail) use ($question) {
+                $answersCount = $question->answers()->count();
+
+                if ($answersCount <= 4) {
+                    $fail('At least four answers are required.');
+                } else if ($value === true) {
+                    /*
+                    if the answer is correct,
+                    then we need to check if there is at least one correct answer remaining
+                    */
+                    $correctAnswersCount = $question->answers()->where('is_correct', true)->count();
+
+                    if ($correctAnswersCount - 1 < MinCorrectAnswerRule::MIN_CORRECT_ANSWER) {
+                        $fail('At least one correct answer is required.');
+                    }
+                }
+            }],
+        ]);
+
+        if ($minCorrectAnswerValidator->fails()) {
+            // Handle validation errors, redirect back with errors
+            return redirect()->back()->withErrors($minCorrectAnswerValidator)->withInput();
+        }
+
+        $answer->delete();
+
+        return redirect()->route('questions.show', $question);
     }
 }
