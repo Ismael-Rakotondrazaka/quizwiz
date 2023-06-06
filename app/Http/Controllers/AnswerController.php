@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAnswerRequest;
+use App\Http\Requests\UpdateAnswerRequest;
 use App\Models\Answer;
 use App\Models\Question;
+use App\Rules\MinCorrectAnswerRule;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -58,15 +61,47 @@ class AnswerController extends Controller
      */
     public function edit(Question $question, Answer $answer)
     {
-        //
+        return Inertia::render('Answers/EditAnswer', [
+            'question' => $question,
+            'answer' => $answer,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Answer $answer)
+    public function update(UpdateAnswerRequest $request, Question $question, Answer $answer)
     {
-        //
+        $validated = $request->safe()->only(['content', 'is_correct']);
+
+        $minCorrectAnswerValidator = Validator::make($validated, [
+            'is_correct' => [function ($attribute, $value, $fail) use ($question) {
+                /*
+                if the answer is not correct,
+                then we need to check if there is at least one correct answer
+                */
+                if ($value === false) {
+                    $correctAnswersCount = $question->answers()->where('is_correct', true)->count();
+
+                    if ($correctAnswersCount - 1 < MinCorrectAnswerRule::MIN_CORRECT_ANSWER) {
+                        $fail('At least one correct answer is required.');
+                    }
+                }
+            }],
+        ]);
+
+
+        if ($minCorrectAnswerValidator->fails()) {
+            // Handle validation errors, redirect back with errors
+            return redirect()->back()->withErrors($minCorrectAnswerValidator)->withInput();
+        }
+
+        $answer->update([
+            'content' => $validated['content'],
+            'is_correct' => $validated['is_correct'],
+        ]);
+
+        return redirect()->route('questions.show', $question);
     }
 
     /**

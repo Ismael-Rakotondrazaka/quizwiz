@@ -67,6 +67,13 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
                     function () {
                         Route::get('/create', 'create')->name('create');
                         Route::post('/store', 'store')->name('store');
+
+                        Route::prefix('/{answer}')->group(
+                            function () {
+                                Route::get('/edit', 'edit')->name('edit');
+                                Route::put('/update', 'update')->name('update');
+                            }
+                        );
                     }
                 );
             });
