@@ -42,12 +42,23 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
     })->name('admin.dashboard');
 
     Route::prefix('/questions')->group(function () {
-        Route::get('/create', function () {
-            return Inertia::render('Questions/CreateQuestion');
-        })->name('questions.create');
+        Route::name('questions.')->group(function () {
+            Route::controller(QuestionController::class)->group(
+                function () {
+                    Route::get('/create', 'create')->name('create');
+                    Route::post('/store', 'store')->name('store');
 
-        Route::post('/store', [QuestionController::class, 'store'])->name('questions.store');
+                    Route::prefix('/{question}')->group(
+                        function () {
+                            Route::get('/', 'show')->name('show');
+                            Route::get('/edit', 'edit')->name('edit');
+                            Route::put('/update', 'update')->name('update');
+                        }
+                    );
+                }
+            );
+        });
     });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

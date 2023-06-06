@@ -19,6 +19,15 @@ class Answer extends Model
         'is_correct',
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'is_correct' => 'boolean',
+    ];
+
     public function question()
     {
         return $this->belongsTo(Question::class);

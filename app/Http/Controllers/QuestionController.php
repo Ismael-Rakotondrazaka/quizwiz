@@ -22,7 +22,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Questions/CreateQuestion');
     }
 
     /**
@@ -30,7 +30,6 @@ class QuestionController extends Controller
      */
     public function store(StoreQuestionRequest $request)
     {
-
         $validated = $request->safe()->only(['content', 'difficulty', 'answers']);
 
         $question = Question::create([
@@ -48,7 +47,11 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        $question->load('answers');
+
+        return Inertia::render('Questions/ShowQuestion', [
+            'question' => $question,
+        ]);
     }
 
     /**
@@ -56,7 +59,11 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        $question->load('answers');
+
+        return Inertia::render('Questions/EditQuestion', [
+            'question' => $question,
+        ]);
     }
 
     /**
@@ -64,7 +71,14 @@ class QuestionController extends Controller
      */
     public function update(UpdateQuestionRequest $request, Question $question)
     {
-        //
+        $validated = $request->safe()->only(['content', 'difficulty']);
+
+        $question->update([
+            'content' => $validated['content'],
+            'difficulty' => $validated['difficulty'],
+        ]);
+
+        return redirect()->route('questions.show', $question->id);
     }
 
     /**
