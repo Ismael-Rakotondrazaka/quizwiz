@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,6 +41,48 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Admin/Dashboard');
     })->name('admin.dashboard');
+
+    Route::prefix('/questions')->group(function () {
+        Route::name('questions.')->group(function () {
+            Route::controller(QuestionController::class)->group(
+                function () {
+                    Route::get('/', 'index')->name('index');
+                    Route::get('/create', 'create')->name('create');
+                    Route::post('/store', 'store')->name('store');
+
+                    Route::prefix('/{question}')->group(
+                        function () {
+                            Route::get('/', 'show')->name('show');
+                            Route::get('/edit', 'edit')->name('edit');
+                            Route::put('/update', 'update')->name('update');
+                            Route::get('/delete', 'delete')->name('delete');
+                            Route::delete('/destroy', 'destroy')->name('destroy');
+                        }
+                    );
+                }
+            );
+        });
+
+        Route::prefix('/{question}/answers')->group(function () {
+            Route::name('answers.')->group(function () {
+                Route::controller(AnswerController::class)->group(
+                    function () {
+                        Route::get('/create', 'create')->name('create');
+                        Route::post('/store', 'store')->name('store');
+
+                        Route::prefix('/{answer}')->group(
+                            function () {
+                                Route::get('/edit', 'edit')->name('edit');
+                                Route::put('/update', 'update')->name('update');
+                                Route::get('/delete', 'delete')->name('delete');
+                                Route::delete('/destroy', 'destroy')->name('destroy');
+                            }
+                        );
+                    }
+                );
+            });
+        });
+    });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
