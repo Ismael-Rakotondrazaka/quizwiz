@@ -18,7 +18,12 @@ class SessionController extends Controller
      */
     public function index()
     {
-        //
+        $sessionsPaginated = Session::paginate(40);
+        $sessionsPaginated->onEachSide(2)->links();
+
+        return Inertia::render('Sessions/IndexSession', [
+            'sessionsPaginated' => $sessionsPaginated,
+        ]);
     }
 
     /**
