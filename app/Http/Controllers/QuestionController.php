@@ -89,8 +89,22 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    public function delete(Question $question)
+    {
+        $question->load('answers');
+
+        return Inertia::render('Questions/DeleteQuestion', [
+            'question' => $question,
+        ]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(Question $question)
     {
-        //
+        $question->delete();
+
+        return redirect()->route('questions.index');
     }
 }

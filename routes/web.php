@@ -55,6 +55,8 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
                             Route::get('/', 'show')->name('show');
                             Route::get('/edit', 'edit')->name('edit');
                             Route::put('/update', 'update')->name('update');
+                            Route::get('/delete', 'delete')->name('delete');
+                            Route::delete('/destroy', 'destroy')->name('destroy');
                         }
                     );
                 }
