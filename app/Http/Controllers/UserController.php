@@ -59,7 +59,14 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        // admin can't see other admins
+        if ($user->isAdmin()) {
+            abort(Response::HTTP_UNAUTHORIZED, 'Unauthorized');
+        } else {
+            return Inertia::render('Users/EditUser', [
+                'user' => $user,
+            ]);
+        }
     }
 
     /**
