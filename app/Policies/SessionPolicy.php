@@ -59,8 +59,10 @@ class SessionPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Session $session): bool
+    public function forceDelete(User $authUser, Session $session, User $user): Response
     {
-        //
+        return $user->id === $session->user_id
+            ? Response::allow()
+            : Response::denyWithStatus(404);
     }
 }
