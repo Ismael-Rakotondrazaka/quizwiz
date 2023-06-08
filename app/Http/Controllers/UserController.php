@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -43,7 +44,14 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        // admin can't see other admins
+        if ($user->isAdmin()) {
+            abort(Response::HTTP_UNAUTHORIZED, 'Unauthorized');
+        } else {
+            return Inertia::render('Users/ShowUser', [
+                'user' => $user,
+            ]);
+        }
     }
 
     /**
