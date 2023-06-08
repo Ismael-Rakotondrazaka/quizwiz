@@ -1,6 +1,7 @@
 <template>
     <div>
         <pre><code>{{ user }}</code></pre>
+        <pre><code>{{ sessions }}</code></pre>
     </div>
 </template>
 
@@ -9,6 +10,10 @@ import { defineProps } from "@vue/runtime-core";
 
 const props = defineProps({
     user: {
+        type: Object,
+        required: true,
+    },
+    sessions: {
         type: Object,
         required: true,
     },

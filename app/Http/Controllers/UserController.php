@@ -49,8 +49,12 @@ class UserController extends Controller
         if ($user->isAdmin()) {
             abort(Response::HTTP_UNAUTHORIZED, 'Unauthorized');
         } else {
+            $sessions = $user->sessions()->where('difficulty', 'easy')->paginate(10);
+            $sessions->onEachSide(2)->links();
+
             return Inertia::render('Users/ShowUser', [
                 'user' => $user,
+                'sessions' => $sessions,
             ]);
         }
     }
