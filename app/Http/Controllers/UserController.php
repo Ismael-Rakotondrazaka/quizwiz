@@ -95,6 +95,13 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        // admin can't delete other admins
+        if ($user->isAdmin()) {
+            abort(Response::HTTP_UNAUTHORIZED, 'Unauthorized');
+        } else {
+            $user->delete();
+
+            return redirect()->route('users.index');
+        }
     }
 }
