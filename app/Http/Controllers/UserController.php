@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -72,9 +73,21 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        // admin can't update other admins
+        if ($user->isAdmin()) {
+            abort(Response::HTTP_UNAUTHORIZED, 'Unauthorized');
+        } else {
+            $validated = $request->safe()->only(['first_name', 'last_name']);
+
+            $user->update([
+                'first_name' => $validated['first_name'],
+                'last_name' => $validated['last_name'],
+            ]);
+
+            return redirect()->route('users.show', $user['id']);
+        }
     }
 
     /**
