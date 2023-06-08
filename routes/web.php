@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -95,6 +96,25 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
                     }
                 );
             });
+        });
+    });
+
+    Route::prefix('/users')->group(function () {
+        Route::name('users.')->group(function () {
+            Route::controller(UserController::class)->group(
+                function () {
+                    Route::get('/', 'index')->name('index');
+
+                    Route::prefix('/{user}')->group(
+                        function () {
+                            Route::get('/', 'show')->name('show');
+                            Route::get('/edit', 'edit')->name('edit');
+                            Route::put('/update', 'update')->name('update');
+                            Route::delete('/destroy', 'destroy')->name('destroy');
+                        }
+                    );
+                }
+            );
         });
     });
 });
