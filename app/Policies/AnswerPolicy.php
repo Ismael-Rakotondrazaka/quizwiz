@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Answer;
+use App\Models\Question;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
@@ -35,9 +36,10 @@ class AnswerPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Answer $answer): bool
+    // public function update(User $user, Question $question, Answer $answer): Response
+    public function update(User $user, Answer $answer, Question $question): Response
     {
-        //
+        return $question->id === $answer->question_id ? Response::allow() : Response::denyWithStatus(404);
     }
 
     /**

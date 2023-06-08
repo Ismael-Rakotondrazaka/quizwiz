@@ -60,6 +60,8 @@ class AnswerController extends Controller
      */
     public function edit(Question $question, Answer $answer)
     {
+        $this->authorize('update', [$answer, $question]);
+
         return Inertia::render('Answers/EditAnswer', [
             'question' => $question,
             'answer' => $answer,
@@ -71,6 +73,8 @@ class AnswerController extends Controller
      */
     public function update(UpdateAnswerRequest $request, Question $question, Answer $answer)
     {
+        $this->authorize('update', [$answer, $question]);
+
         $validated = $request->safe()->only(['content', 'is_correct']);
 
         $minCorrectAnswerValidator = Validator::make($validated, [
