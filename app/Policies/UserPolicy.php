@@ -2,12 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\Answer;
-use App\Models\Question;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class AnswerPolicy
+class UserPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -20,9 +18,10 @@ class AnswerPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Answer $answer): bool
+    public function view(User $user, User $model): bool
     {
-        //
+        // admin can't see other admins
+        return !$model->isAdmin();
     }
 
     /**
@@ -36,16 +35,15 @@ class AnswerPolicy
     /**
      * Determine whether the user can update the model.
      */
-    // public function update(User $user, Question $question, Answer $answer): Response
-    public function update(User $user, Answer $answer, Question $question): Response
+    public function update(User $user, User $model): bool
     {
-        return $question->id === $answer->question_id ? Response::allow() : Response::denyWithStatus(404);
+        return !$model->isAdmin();
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Answer $answer): bool
+    public function delete(User $user, User $model): bool
     {
         //
     }
@@ -53,7 +51,7 @@ class AnswerPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Answer $answer): bool
+    public function restore(User $user, User $model): bool
     {
         //
     }
@@ -61,8 +59,8 @@ class AnswerPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Answer $answer): bool
+    public function forceDelete(User $user, User $model): bool
     {
-        //
+        return !$model->isAdmin();
     }
 }

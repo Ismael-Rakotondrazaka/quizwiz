@@ -7,6 +7,7 @@ use App\Http\Requests\StoreSessionRequest;
 use App\Http\Requests\UpdateSessionRequest;
 use App\Models\Question;
 use App\Models\Session;
+use App\Models\User;
 use App\Rules\QuestionsPerSessionRule;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -133,8 +134,12 @@ class SessionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Session $session)
+    public function destroy(User $user, Session $session)
     {
-        //
+        $this->authorize('forceDelete', [$session, $user]);
+
+        $session->delete();
+
+        return redirect()->route('users.show', $user->id);
     }
 }
