@@ -61,8 +61,8 @@ class AnswerPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Answer $answer): bool
+    public function forceDelete(User $user, Answer $answer, Question $question): Response
     {
-        //
+        return $question->id === $answer->question_id ? Response::allow() : Response::denyWithStatus(404);
     }
 }

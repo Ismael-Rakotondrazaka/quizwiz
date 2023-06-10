@@ -112,6 +112,8 @@ class AnswerController extends Controller
      */
     public function delete(Question $question, Answer $answer)
     {
+        $this->authorize('forceDelete', [$answer, $question]);
+
         return Inertia::render('Answers/DeleteAnswer', [
             'question' => $question,
             'answer' => $answer,
@@ -123,6 +125,8 @@ class AnswerController extends Controller
      */
     public function destroy(Question $question, Answer $answer)
     {
+        $this->authorize('forceDelete', [$answer, $question]);
+
         $minCorrectAnswerValidator = Validator::make($answer->getOriginal(), [
             'is_correct' => [function ($attribute, $value, $fail) use ($question) {
                 $answersCount = $question->answers()->count();
