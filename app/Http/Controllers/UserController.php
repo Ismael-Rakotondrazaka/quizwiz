@@ -45,18 +45,15 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        // admin can't see other admins
-        if ($user->isAdmin()) {
-            abort(Response::HTTP_UNAUTHORIZED, 'Unauthorized');
-        } else {
-            $sessions = $user->sessions()->where('difficulty', 'easy')->paginate(10);
-            $sessions->onEachSide(2)->links();
+        $this->authorize('view', $user);
 
-            return Inertia::render('Users/ShowUser', [
-                'user' => $user,
-                'sessions' => $sessions,
-            ]);
-        }
+        $sessions = $user->sessions()->where('difficulty', 'easy')->paginate(10);
+        $sessions->onEachSide(2)->links();
+
+        return Inertia::render('Users/ShowUser', [
+            'user' => $user,
+            'sessions' => $sessions,
+        ]);
     }
 
     /**
@@ -64,14 +61,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        // admin can't see other admins
-        if ($user->isAdmin()) {
-            abort(Response::HTTP_UNAUTHORIZED, 'Unauthorized');
-        } else {
-            return Inertia::render('Users/EditUser', [
-                'user' => $user,
-            ]);
-        }
+        $this->authorize('update', $user);
+
+        return Inertia::render('Users/EditUser', [
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -79,19 +73,16 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        // admin can't update other admins
-        if ($user->isAdmin()) {
-            abort(Response::HTTP_UNAUTHORIZED, 'Unauthorized');
-        } else {
-            $validated = $request->safe()->only(['first_name', 'last_name']);
+        $this->authorize('update', $user);
 
-            $user->update([
-                'first_name' => $validated['first_name'],
-                'last_name' => $validated['last_name'],
-            ]);
+        $validated = $request->safe()->only(['first_name', 'last_name']);
 
-            return redirect()->route('users.show', $user['id']);
-        }
+        $user->update([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+        ]);
+
+        return redirect()->route('users.show', $user['id']);
     }
 
     /**
@@ -99,13 +90,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        // admin can't delete other admins
-        if ($user->isAdmin()) {
-            abort(Response::HTTP_UNAUTHORIZED, 'Unauthorized');
-        } else {
-            $user->delete();
+        $this->authorize('forceDelete', $user);
 
-            return redirect()->route('users.index');
-        }
+        $user->delete();
+
+        return redirect()->route('users.index');
     }
 }
