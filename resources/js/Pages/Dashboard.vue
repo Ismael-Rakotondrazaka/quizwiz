@@ -1,6 +1,8 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import CustomButton from "@/Components/Commons/CustomButton.vue";
 import { Head } from '@inertiajs/vue3';
+import CustomRadioButton from "@/Components/Commons/CustomRadioButton.vue";
 </script>
 
 <template>
@@ -18,5 +20,10 @@ import { Head } from '@inertiajs/vue3';
                 </div>
             </div>
         </div>
+
+        <CustomButton>Nextezuyt
+
+            <template v-slot:badge>10</template>
+        </CustomButton>
     </AuthenticatedLayout>
 </template>
