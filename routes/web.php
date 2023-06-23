@@ -26,8 +26,18 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'isAuthenticated' => auth()->check(),
     ]);
-});
+})->name('home');
+
+Route::get('/about', function () {
+    return Inertia::render(
+        'About',
+        [
+            'isAuthenticated' => auth()->check(),
+        ]
+    );
+})->name('about');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

@@ -1,20 +1,34 @@
-<script setup>
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import { Link } from '@inertiajs/vue3';
-</script>
-
 <template>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-        <div>
-            <Link href="/">
-                <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
-            </Link>
-        </div>
+    <div class="">
+        <img src="@/assets/images/abstract_curve.svg" alt="" class="absolute top-0 right-0 left-1/3 -z-10" />
 
-        <div
-            class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"
-        >
-            <slot />
-        </div>
+        <header class="container flex items-center justify-between px-4 pt-2 mx-auto sm:px-6 lg:px-8 sm:pt-4 lg:pt-8">
+            <div>QuizWiz</div>
+
+            <nav>
+                <ul class="flex items-center justify-between gap-10">
+                    <li>
+                        <NavLink routeName="home">Home</NavLink>
+                    </li>
+                    <li>
+                        <NavLink routeName="login">Sign in</NavLink>
+                    </li>
+                    <li>
+                        <NavLink routeName="register">Register</NavLink>
+                    </li>
+                    <li>
+                        <NavLink routeName="about">About</NavLink>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <slot />
     </div>
 </template>
+
+<script setup>
+import NavLink from "@/Components/Header/NavLink.vue";
+</script>
+
+<style scoped></style>
