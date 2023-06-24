@@ -1,0 +1,50 @@
+<template>
+    <main class="relative min-h-[100vh] flex items-center justify-around">
+        <img src="@/assets/images/illustration_question.svg" alt="" class="w-1/3 max-w-xl" />
+        <div>
+            <h1 id="" class="mb-16 font-bold text-white text-8xl text-shadow">Test Your Coding<br><span id="typing" /></h1>
+            <Link :href="href"
+                class="px-10 py-4 text-3xl text-white uppercase border-2 rounded-full bg-sky-800/80 fond-bold">
+            Start now</Link>
+        </div>
+    </main>
+</template>
+
+<script setup>
+import Typed from 'typed.js';
+import { onMounted, ref, computed } from "vue";
+import { Link } from '@inertiajs/vue3';
+
+const typed = ref(null);
+
+onMounted(() => {
+    typed.value = new Typed('#typing', {
+        strings: [
+            "Superpowers",
+            "Skills"
+        ],
+        typeSpeed: 100,
+        loop: true,
+        loopCount: Infinity,
+        smartBackspace: false,
+        backSpeed: 80,
+        backDelay: 1000,
+    });
+});
+
+const props = defineProps({
+    isAuthenticated: {
+        type: Boolean,
+        required: false,
+        default: false,
+    }
+});
+
+const href = computed(() => props.isAuthenticated ? route('dashboard') : route('login'));
+</script>
+
+<style scoped>
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+</style>
