@@ -29,7 +29,7 @@
 
                 <div class="flex items-center justify-end mt-4">
                     <Link v-if="canResetPassword" :href="route('password.request')"
-                        class="text-sm text-gray-600 underline rounded-md hover:text-sky-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        class="text-sm underline rounded-md text-sky-600 hover:text-sky-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Forgot your password?
                     </Link>
 
