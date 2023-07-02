@@ -1,10 +1,12 @@
 <template>
-    <div>
-        <pre><code>{{ question }}</code></pre>
-        <Link :href="route('questions.edit', question.id)">Edit</Link>
-    </div>
+    <AuthenticatedLayout>
 
-    <ul>
+        <Head :title="title" />
+
+        <ShowQuestionItem :question="question" />
+    </AuthenticatedLayout>
+
+    <!-- <ul>
         'ses'
         <li>
             <h1>{{ index + 1 }}. {{ question.content }}</h1>
@@ -24,11 +26,14 @@
                 </li>
             </ul>
         </li>
-    </ul>
+    </ul> -->
 </template>
 
 <script setup>
-import { Link } from "@inertiajs/vue3";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import ShowQuestionItem from "@/Components/Questions/ShowQuestionItem.vue";
+import { Link, Head } from "@inertiajs/vue3";
+import { computed } from "vue";
 
 const props = defineProps({
     question: {
@@ -36,6 +41,8 @@ const props = defineProps({
         required: true,
     },
 });
+
+const title = computed(() => "Question | " + props.question.content.slice(0, 50) + "...");
 </script>
 
 <style scoped></style>

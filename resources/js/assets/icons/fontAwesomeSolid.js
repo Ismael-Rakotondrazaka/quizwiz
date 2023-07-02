@@ -1,1 +1,6 @@
-export { faPlus, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+export {
+    faPlus,
+    faTrashCan,
+    faPenToSquare,
+    faExclamationTriangle,
+} from "@fortawesome/free-solid-svg-icons";

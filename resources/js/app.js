@@ -1,5 +1,6 @@
 import "./bootstrap";
 import "../css/app.css";
+import "floating-vue/dist/style.css";
 
 import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/vue3";
@@ -10,6 +11,7 @@ const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import * as fontAwesomeSolid from "./assets/icons/fontAwesomeSolid.js";
+import FloatingVue from "floating-vue";
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -23,6 +25,7 @@ createInertiaApp({
         const app = createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
+            .use(FloatingVue)
             .component("fa-icon", FontAwesomeIcon)
             .mount(el);
         return app;
