@@ -33,19 +33,14 @@
         </td>
 
         <td class="px-4 py-2 text-center border-b">
-            <button @click.prevent="deleteAnswer">
-                <fa-icon
-                    icon="fa-solid fa-trash-can"
-                    class="text-3xl text-red-400"
-                />
-                <span class="sr-only">Delete</span>
-            </button>
+            <DeleteAnswer :question="question" :answer="answer" />
         </td>
     </tr>
 </template>
 
 <script setup>
 import { computed } from "vue";
+import DeleteAnswer from "@/Components/Answers/DeleteAnswer.vue";
 import { Link } from "@inertiajs/vue3";
 
 const props = defineProps({
