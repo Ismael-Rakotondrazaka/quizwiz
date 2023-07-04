@@ -12,6 +12,8 @@
             ></textarea>
         </td>
 
+        <td class="px-4 py-2 border-b">{{ difficulty }}</td>
+
         <td class="px-4 py-2 text-center border-b">
             <Link :href="route('questions.show', [question.id])">
                 <fa-icon
@@ -42,6 +44,16 @@ const props = defineProps({
 
 const background = computed(() =>
     props.rank % 2 ? "bg-slate-50" : "bg-slate-200"
+);
+
+const difficultyFormatted = {
+    easy: "Easy",
+    medium: "Medium",
+    hard: "Hard",
+};
+
+const difficulty = computed(
+    () => difficultyFormatted[props.question.difficulty]
 );
 </script>
 

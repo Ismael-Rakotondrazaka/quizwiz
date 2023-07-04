@@ -12,6 +12,7 @@
                     <tr>
                         <th class="px-4 py-2 border-b max-w-[15px]">Id</th>
                         <th class="w-full px-4 py-2 border-b">Content</th>
+                        <th class="w-full px-4 py-2 border-b">Difficulty</th>
                         <th class="px-4 py-2 border-b">Open</th>
                     </tr>
                 </thead>
@@ -25,7 +26,10 @@
                 </tbody>
             </table>
 
-            <PaginationLinkList :paginationLinks="paginationLinks" class="mt-7"/>
+            <PaginationLinkList
+                :paginationLinks="paginationLinks"
+                class="mt-7"
+            />
         </div>
     </div>
 </template>
