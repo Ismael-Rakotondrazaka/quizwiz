@@ -1,16 +1,19 @@
 <template>
-    <div>
-        <pre><code>{{ paginationLinks }}</code></pre>
+    <AuthenticatedLayout>
+        <Head :title="title" />
 
-        <div v-for="(link, index) in paginationLinks" :key="index">
-            <Link v-if="link.url" :href="link.url" v-html="link.label" />
-            <span v-else v-html="link.label" />
-        </div>
-    </div>
+        <IndexQuestionList
+            :questions="questions"
+            :paginationLinks="paginationLinks"
+            class="my-20"
+        />
+    </AuthenticatedLayout>
 </template>
 
 <script setup>
-import { Link } from "@inertiajs/vue3";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import IndexQuestionList from "@/Components/Questions/IndexQuestionList.vue";
+import { Head } from "@inertiajs/vue3";
 import { computed, defineProps } from "@vue/runtime-core";
 
 const props = defineProps({
@@ -27,6 +30,10 @@ const questions = computed(() => {
 const paginationLinks = computed(() => {
     return props.questionsPaginated.links;
 });
+
+const title = computed(
+    () => "Questions | Page " + props.questionsPaginated.current_page
+);
 </script>
 
 <style scoped></style>
