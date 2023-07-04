@@ -22,6 +22,7 @@
         "@fortawesome/fontawesome-svg-core": "^6.4.0",
         "@fortawesome/free-solid-svg-icons": "^6.4.0",
         "@fortawesome/vue-fontawesome": "^3.0.3",
+        "@vueuse/core": "^10.2.1",
         "floating-vue": "^2.0.0-beta.24",
         "typed.js": "^2.0.16"
     }
