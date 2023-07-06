@@ -131,7 +131,7 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
             Route::controller(SessionController::class)->group(function () {
                 Route::prefix('/{user}/sessions/{session}')->group(
                     function () {
-                        Route::get('/destroy', 'destroy')->name('destroy');
+                        Route::delete('/destroy', 'destroy')->name('destroy');
                     }
                 );
             });

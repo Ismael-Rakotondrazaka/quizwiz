@@ -1,23 +1,45 @@
 <template>
-    <div>
-        <pre><code>{{ user }}</code></pre>
-        <pre><code>{{ sessions }}</code></pre>
-    </div>
+    <AuthenticatedLayout>
+        <Head :title="title" />
+
+        <ShowUserItem
+            :user="user"
+            :sessions="sessions"
+            :paginationLinks="paginationLinks"
+            class="my-20"
+        />
+    </AuthenticatedLayout>
 </template>
 
 <script setup>
 import { defineProps } from "@vue/runtime-core";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import ShowUserItem from "@/Components/Users/ShowUserItem.vue";
+import { Head } from "@inertiajs/vue3";
+import { computed } from "vue";
 
 const props = defineProps({
     user: {
         type: Object,
         required: true,
     },
-    sessions: {
+    sessionsPaginated: {
         type: Object,
         required: true,
     },
 });
+
+const sessions = computed(() => {
+    return props.sessionsPaginated.data;
+});
+
+const paginationLinks = computed(() => {
+    return props.sessionsPaginated.links;
+});
+
+const title = computed(
+    () => "User | " + props.user.first_name + " " + props.user.last_name
+);
 </script>
 
 <style scoped></style>

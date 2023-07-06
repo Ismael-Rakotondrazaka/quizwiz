@@ -47,12 +47,12 @@ class UserController extends Controller
     {
         $this->authorize('view', $user);
 
-        $sessions = $user->sessions()->where('difficulty', 'easy')->paginate(10);
+        $sessions = $user->sessions()->paginate(20);
         $sessions->onEachSide(2)->links();
 
         return Inertia::render('Users/ShowUser', [
             'user' => $user,
-            'sessions' => $sessions,
+            'sessionsPaginated' => $sessions,
         ]);
     }
 

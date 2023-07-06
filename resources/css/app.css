@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.v-popper__popper--no-positioning {
+    position: fixed !important;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.v-popper__popper--no-positioning .v-popper__backdrop {
+    display: block;
+    background: rgba(0 0 0 / 90%);
+}
+
+.v-popper__popper--no-positioning .v-popper__wrapper {
+    width: 100%;
+    pointer-events: auto;
+    transition: transform 0.15s ease-out;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.v-popper__popper--no-positioning .v-popper__inner {
+    width: 100%;
+    max-width: 28rem;
+    /* padding: 1rem; */
+    border-radius: 0.5rem !important;
+}
+
+.v-popper__popper--no-positioning.v-popper__popper--hidden .v-popper__wrapper {
+    transform: translateY(100%);
+}
