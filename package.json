@@ -23,7 +23,9 @@
         "@fortawesome/free-solid-svg-icons": "^6.4.0",
         "@fortawesome/vue-fontawesome": "^3.0.3",
         "@vueuse/core": "^10.2.1",
+        "chart.js": "^4.3.0",
         "floating-vue": "^2.0.0-beta.24",
-        "typed.js": "^2.0.16"
+        "typed.js": "^2.0.16",
+        "vue-chartjs": "^5.2.0"
     }
 }
