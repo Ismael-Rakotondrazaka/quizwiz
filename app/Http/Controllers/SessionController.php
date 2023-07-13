@@ -99,12 +99,24 @@ class SessionController extends Controller
             }
         }
 
+        $stars = 0;
+
+        if ($score < 3) {
+            $stars = 0;
+        } else if ($score < 5) {
+            $stars = 1;
+        } else if ($score < 8) {
+            $stars = 2;
+        } else {
+            $stars = 3;
+        }
+
         $request->user()->sessions()->create([
             'score' => $score,
             'difficulty' => $validated['difficulty'],
         ]);
 
-        return redirect()->route('sessions.create');
+        return redirect()->route('dashboard', ["stars" => $stars]);
     }
 
     /**

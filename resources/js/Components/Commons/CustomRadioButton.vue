@@ -1,7 +1,7 @@
 <template>
     <label
         :for="props.for"
-        class="relative inline-block px-20 py-3 ml-5 border-2 rounded-lg ring-4 ring-transparent hover:cursor-pointer transition-all"
+        class="relative inline-block px-20 py-3 text-center transition-all border-2 rounded-lg ring-4 ring-transparent hover:cursor-pointer"
         :class="[mainClass, hoverClass]"
     >
         <input
@@ -16,7 +16,7 @@
 
         <span
             v-if="props.badge"
-            class="absolute top-0 left-0 inline-block py-1 pl-2 pr-4 rounded-tl-lg transition-all"
+            class="absolute top-0 left-0 inline-block py-1 pl-2 pr-4 transition-all rounded-tl-lg"
             :class="[badgeClass]"
             style="clip-path: polygon(100% 0, 74% 100%, 0 100%, 1% 0)"
         >
@@ -29,9 +29,11 @@
 
 <script setup>
 import { computed, defineEmits } from "vue";
+
 const props = defineProps({
     badge: {
         required: false,
+        default: null,
     },
     value: {
         required: true,
@@ -55,7 +57,11 @@ const changeHandler = (e) => {
 
 const isChecked = computed(() => props.modelValue === props.value);
 
-const mainClass = computed(() => (isChecked.value ? "bg-sky-600 text-white border-sky-600" : "bg-white text-slate-700 border-sky-400"));
+const mainClass = computed(() =>
+    isChecked.value
+        ? "bg-sky-600 text-white border-sky-600"
+        : "bg-white text-slate-700 border-sky-400"
+);
 
 const hoverClass = computed(() =>
     isChecked.value ? "" : "hover:ring-sky-400 hover:border-white"

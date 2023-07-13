@@ -4,4 +4,5 @@ export {
     faPenToSquare,
     faExclamationTriangle,
     faArrowUpRightFromSquare,
+    faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";

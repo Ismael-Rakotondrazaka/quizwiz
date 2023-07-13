@@ -52,7 +52,11 @@ const chartData = computed(() => {
 
     if (props.easyCount + props.mediumCount + props.hardCount > 0) {
         result = {
-            labels: ["Easy", "Medium", "Hard"],
+            labels: [
+                `Easy: ${props.easyCount}`,
+                `Medium: ${props.mediumCount}`,
+                `Hard: ${props.hardCount}`,
+            ],
             datasets: [
                 {
                     backgroundColor: [
