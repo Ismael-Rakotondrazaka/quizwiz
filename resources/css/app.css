@@ -42,3 +42,25 @@ body.no-scroll {
 .v-popper__popper--no-positioning.v-popper__popper--hidden .v-popper__wrapper {
     transform: translateY(100%);
 }
+
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+@media (max-width: 767px) {
+    .markdown-body {
+        padding: 0.5rem;
+    }
+}
+
+.markdown-body ul {
+    list-style-type: disc;
+}
+
+.markdown-body ol {
+    list-style-type: decimal;
+}

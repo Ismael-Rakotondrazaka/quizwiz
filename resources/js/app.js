@@ -1,6 +1,8 @@
 import "./bootstrap";
 import "../css/app.css";
 import "floating-vue/dist/style.css";
+import "github-markdown-css/github-markdown-light.css";
+import "highlight.js/styles/github.css";
 
 import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/vue3";
