@@ -12,6 +12,7 @@ const appName =
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import * as fontAwesomeSolid from "./assets/icons/fontAwesomeSolid.js";
 import FloatingVue from "floating-vue";
+import Particles from "vue3-particles";
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -26,6 +27,7 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .use(FloatingVue)
+            .use(Particles)
             .component("fa-icon", FontAwesomeIcon)
             .mount(el);
         return app;

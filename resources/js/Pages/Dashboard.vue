@@ -2,6 +2,8 @@
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
+        <TheStarDisplayer :stars="stars" :shown="haveStar" />
+
         <TheDashboard
             class="my-20"
             :sessions="sessions"
@@ -15,9 +17,10 @@
 
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, usePage } from "@inertiajs/vue3";
 import { computed } from "vue";
 import TheDashboard from "@/Components/Dashboard/TheDashboard.vue";
+import TheStarDisplayer from "@/Components/Stars/TheStarDisplayer.vue";
 
 const props = defineProps({
     user: {
@@ -44,6 +47,12 @@ const props = defineProps({
         default: 0,
     },
 });
+
+const page = usePage();
+
+const haveStar = computed(() => !!page.props.ziggy?.query?.stars);
+
+const stars = computed(() => (haveStar ? +page.props.ziggy.query.stars : 0));
 
 const sessions = computed(() => props.sessionsPaginated.data);
 

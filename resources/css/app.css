@@ -19,7 +19,7 @@ body.no-scroll {
 
 .v-popper__popper--no-positioning .v-popper__backdrop {
     display: block;
-    background: rgba(0 0 0 / 90%);
+    background: rgba(0 0 0 / 50%);
 }
 
 .v-popper__popper--no-positioning .v-popper__wrapper {

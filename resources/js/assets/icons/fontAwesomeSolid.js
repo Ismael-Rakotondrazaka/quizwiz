@@ -5,4 +5,5 @@ export {
     faExclamationTriangle,
     faArrowUpRightFromSquare,
     faQuestionCircle,
+    faStar,
 } from "@fortawesome/free-solid-svg-icons";
