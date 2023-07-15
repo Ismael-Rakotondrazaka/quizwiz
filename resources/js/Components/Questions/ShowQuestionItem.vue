@@ -11,13 +11,9 @@
                 <div>
                     <InputLabel for="content" value="Content" />
 
-                    <textarea
-                        id="content"
-                        class="w-full p-2 mt-1 border border-gray-300 rounded-md min-h-[7em]"
-                        :value="question.content"
-                        required
-                        autofocus
-                        disabled
+                    <MarkdownContent
+                        :markdown="question.content"
+                        class="!w-full !mt-1"
                     />
                 </div>
 
@@ -77,6 +73,7 @@ import InputLabel from "@/Components/InputLabel.vue";
 import DeleteQuestion from "@/Components/Questions/DeleteQuestion.vue";
 import { Link } from "@inertiajs/vue3";
 import IndexAnswerList from "@/Components/Answers/IndexAnswerList.vue";
+import MarkdownContent from "../TextEditor/MarkdownContent.vue";
 
 const props = defineProps({
     question: {

@@ -3,13 +3,10 @@
         <td class="px-4 py-2 border-b">{{ question.id }}</td>
 
         <td class="px-4 py-2 border-b">
-            <textarea
+            <MarkdownContent
+                :markdown="question.content"
                 :id="'question-' + question.id"
-                class="w-full min-h-[5em] p-2 border border-gray-300 rounded-md"
-                :value="question.content"
-                required
-                disabled
-            ></textarea>
+            />
         </td>
 
         <td class="px-4 py-2 border-b">{{ difficulty }}</td>
@@ -27,6 +24,7 @@
 </template>
 
 <script setup>
+import MarkdownContent from "../TextEditor/MarkdownContent.vue";
 import { computed } from "vue";
 import { Link } from "@inertiajs/vue3";
 

@@ -1,7 +1,7 @@
 <template>
     <div
         v-html="html"
-        class="markdown-body border border-gray-300 rounded-md min-h-[7em]"
+        class="markdown-body border border-gray-300 rounded-md min-h-[7em] !max-w-full"
     ></div>
 </template>
 

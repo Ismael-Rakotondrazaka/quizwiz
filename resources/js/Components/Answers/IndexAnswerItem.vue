@@ -3,13 +3,10 @@
         <td class="px-4 py-2 border-b">{{ answer.id }}</td>
 
         <td class="px-4 py-2 border-b">
-            <textarea
+            <MarkdownContent
+                :markdown="answer.content"
                 :id="'answer-' + answer.id"
-                class="w-full min-h-[5em] p-2 border border-gray-300 rounded-md"
-                :value="answer.content"
-                required
-                disabled
-            ></textarea>
+            />
         </td>
 
         <td class="px-4 py-2 text-center border-b">
@@ -39,8 +36,9 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
 import DeleteAnswer from "@/Components/Answers/DeleteAnswer.vue";
+import MarkdownContent from "../TextEditor/MarkdownContent.vue";
+import { computed } from "vue";
 import { Link } from "@inertiajs/vue3";
 
 const props = defineProps({
@@ -63,7 +61,6 @@ const background = computed(() =>
     props.rank % 2 ? "bg-slate-50" : "bg-slate-200"
 );
 
-const deleteAnswer = () => {};
 </script>
 
 <style scoped></style>

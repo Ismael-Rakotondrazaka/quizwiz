@@ -11,14 +11,9 @@
                 <div>
                     <InputLabel for="question" value="Question" />
 
-                    <textarea
-                        id="question"
-                        readonly
-                        class="w-full p-2 mt-1 border border-gray-300 bg-gray-100 rounded-md min-h-[7em] cursor-not-allowed focus:border-gray-300"
-                        v-model="props.question.content"
-                        required
-                        autofocus
-                        autocomplete="content"
+                    <MarkdownContent
+                        :markdown="question.content"
+                        class="!mt-1"
                     />
 
                     <InputError class="mt-2" :message="form.errors.content" />
@@ -79,13 +74,12 @@
 </template>
 
 <script setup>
-import Checkbox from "@/Components/Checkbox.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import TextInput from "@/Components/TextInput.vue";
-import { Head, Link, useForm } from "@inertiajs/vue3";
+import { useForm } from "@inertiajs/vue3";
 import MarkdownEditor from "../TextEditor/MarkdownEditor.vue";
+import MarkdownContent from "../TextEditor/MarkdownContent.vue";
 
 const props = defineProps({
     question: {
@@ -95,53 +89,7 @@ const props = defineProps({
 });
 
 const form = useForm({
-    content: `
-# Heading 1
-
-## Heading 2
-
-### Heading 3
-
-**Bold Text**
-
-*Italic Text*
-
-~~Strikethrough Text~~
-
-[Link](https://www.example.com)
-
-[Link with Title](https://www.example.com "Link Title")
-
-- List Item 1
-- List Item 2
-- List Item 3
-
-1. Ordered Item 1
-2. Ordered Item 2
-3. Ordered Item 3
-
-> Blockquote
-
-\`\`\`javascript
-// Code block
-const message = 'Hello, world!';
-console.log(message);
-\`\`\`
-
-![Image](image.jpg)
-
-| Column 1 | Column 2 |
-| -------- | -------- |
-| Row 1    | Row 1    |
-| Row 2    | Row 2    |
-| Row 1    | Row 1    |
-| Row 2    | Row 2    |
-
-Horizontal Rule:
-
----
-
-`,
+    content: "",
     is_correct: false,
 });
 
