@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\DashboardController;
@@ -62,9 +63,7 @@ Route::prefix('/sessions')->middleware('auth')->group(function () {
 });
 
 Route::prefix('/admin')->middleware('admin')->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Admin/Dashboard');
-    })->name('admin.dashboard');
+    Route::get('/dashboard', [AdminDashboardController::class, 'show'])->name('admin.dashboard');
 
     Route::prefix('/questions')->group(function () {
         Route::name('questions.')->group(function () {
