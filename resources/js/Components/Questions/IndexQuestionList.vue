@@ -7,6 +7,12 @@
                 Questions:
             </h1>
 
+            <Link :href="route('questions.create')">
+                <PrimaryButton class="my-3">
+                    <fa-icon icon="fa-solid fa-plus" class="mr-3" /> New question
+                </PrimaryButton>
+            </Link>
+
             <table class="min-w-full mt-1 bg-white border border-gray-300">
                 <thead>
                     <tr>
@@ -37,6 +43,8 @@
 <script setup>
 import IndexQuestionItem from "@/Components/Questions/IndexQuestionItem.vue";
 import PaginationLinkList from "../Commons/PaginationLinkList.vue";
+import { Link } from "@inertiajs/vue3";
+import PrimaryButton from "../PrimaryButton.vue";
 
 const props = defineProps({
     questions: {
