@@ -60,6 +60,13 @@
                 <InputError class="mt-2" :message="form.errors.content" />
 
                 <div class="flex items-center justify-end mt-9">
+                    <Link
+                        :href="route('questions.show', [question.id])"
+                        class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-black uppercase transition duration-150 ease-in-out bg-gray-300 border border-transparent rounded-md hover:bg-gray-400 focus:bg-gray-500 active:bg-gray-500 focus:outline-none"
+                    >
+                        Cancel
+                    </Link>
+
                     <PrimaryButton
                         class="ml-4"
                         :class="{ 'opacity-25': form.processing }"
@@ -77,7 +84,7 @@
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import { useForm } from "@inertiajs/vue3";
+import { useForm, Link } from "@inertiajs/vue3";
 import MarkdownEditor from "../TextEditor/MarkdownEditor.vue";
 import MarkdownContent from "../TextEditor/MarkdownContent.vue";
 

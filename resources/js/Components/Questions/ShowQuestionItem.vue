@@ -1,8 +1,10 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
         <div
-            class="w-full p-8 bg-white border rounded-lg shadow-lg border-sky-400 md:w-1/2 lg:w-2/3"
+            class="relative w-full p-8 bg-white border rounded-lg shadow-lg border-sky-400 md:w-1/2 lg:w-2/3"
         >
+            <GoBack class="absolute" />
+
             <div>
                 <h1 class="text-2xl font-bold text-center text-gray-800 mb-7">
                     Question {{ question.id }}:
@@ -71,9 +73,10 @@
 <script setup>
 import InputLabel from "@/Components/InputLabel.vue";
 import DeleteQuestion from "@/Components/Questions/DeleteQuestion.vue";
-import { Link } from "@inertiajs/vue3";
 import IndexAnswerList from "@/Components/Answers/IndexAnswerList.vue";
 import MarkdownContent from "../TextEditor/MarkdownContent.vue";
+import GoBack from "@/Components/Commons/GoBack.vue";
+import { Link } from "@inertiajs/vue3";
 
 const props = defineProps({
     question: {

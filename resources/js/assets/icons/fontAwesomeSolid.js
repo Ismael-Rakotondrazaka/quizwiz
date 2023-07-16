@@ -6,4 +6,5 @@ export {
     faArrowUpRightFromSquare,
     faQuestionCircle,
     faStar,
+    faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";

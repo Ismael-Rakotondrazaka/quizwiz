@@ -1,15 +1,18 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
         <div
-            class="w-full p-8 bg-white border rounded-lg shadow-lg border-sky-400 md:w-1/2 lg:w-2/3"
+            class="relative w-full p-8 bg-white border rounded-lg shadow-lg border-sky-400 md:w-1/2 lg:w-2/3"
         >
+            <GoBack class="absolute" />
+
             <h1 class="text-2xl font-bold text-center text-gray-800 mb-7">
                 Questions:
             </h1>
 
             <Link :href="route('questions.create')">
                 <PrimaryButton class="my-3">
-                    <fa-icon icon="fa-solid fa-plus" class="mr-3" /> New question
+                    <fa-icon icon="fa-solid fa-plus" class="mr-3" /> New
+                    question
                 </PrimaryButton>
             </Link>
 
@@ -45,6 +48,7 @@ import IndexQuestionItem from "@/Components/Questions/IndexQuestionItem.vue";
 import PaginationLinkList from "../Commons/PaginationLinkList.vue";
 import { Link } from "@inertiajs/vue3";
 import PrimaryButton from "../PrimaryButton.vue";
+import GoBack from "../Commons/GoBack.vue";
 
 const props = defineProps({
     questions: {
