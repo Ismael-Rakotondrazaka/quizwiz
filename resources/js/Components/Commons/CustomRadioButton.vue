@@ -1,7 +1,7 @@
 <template>
     <label
         :for="props.for"
-        class="relative inline-block px-20 py-3 text-center transition-all border-2 rounded-lg ring-4 ring-transparent hover:cursor-pointer"
+        class="relative inline-block p-2 rounded-lg hover:cursor-pointer"
         :class="[mainClass, hoverClass]"
     >
         <input
@@ -16,7 +16,7 @@
 
         <span
             v-if="props.badge"
-            class="absolute top-0 left-0 inline-block py-1 pl-2 pr-4 transition-all rounded-tl-lg"
+            class="absolute inline-block py-1 pl-2 pr-4 transition-all rounded-tl-lg -top-1 -left-1"
             :class="[badgeClass]"
             style="clip-path: polygon(100% 0, 74% 100%, 0 100%, 1% 0)"
         >
@@ -68,7 +68,7 @@ const hoverClass = computed(() =>
 );
 
 const badgeClass = computed(() =>
-    isChecked.value ? "bg-white text-black" : "bg-sky-400"
+    isChecked.value ? "bg-sky-600" : "bg-sky-400"
 );
 </script>
 

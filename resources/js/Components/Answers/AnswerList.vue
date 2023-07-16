@@ -1,5 +1,5 @@
 <template>
-    <ul class="flex flex-wrap items-center w-full gap-y-7 justify-evenly">
+    <ul class="flex flex-wrap items-start w-full gap-y-7 justify-evenly">
         <AnswerItem
             @answers:update="onAnswerUpdateHandler"
             v-for="(answer, index) in answers"

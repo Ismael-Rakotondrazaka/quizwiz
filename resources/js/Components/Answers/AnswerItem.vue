@@ -8,13 +8,17 @@
             @onValueChanged="onValueChangedTrigger"
             class="w-full"
         >
-            {{ content }}
+            <MarkdownContent
+                :markdown="content"
+                class="!rounded-lg !min-h-[unset]"
+            />
         </CustomRadioButton>
     </li>
 </template>
 
 <script setup>
 import CustomRadioButton from "@/Components/Commons/CustomRadioButton.vue";
+import MarkdownContent from "../TextEditor/MarkdownContent.vue";
 
 const props = defineProps({
     answerId: {

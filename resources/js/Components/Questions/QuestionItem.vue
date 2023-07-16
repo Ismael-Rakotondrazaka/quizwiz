@@ -8,9 +8,7 @@
                 class="block mx-auto -translate-y-10 text-7xl text-sky-600"
             />
 
-            <div class="flex items-center justify-center w-full mb-20">
-                <h1 class="p-3 text-xl">{{ content }}</h1>
-            </div>
+            <MarkdownContent :markdown="content" class="!border-sky-300" />
         </div>
 
         <AnswerList
@@ -24,6 +22,7 @@
 
 <script setup>
 import AnswerList from "../Answers/AnswerList.vue";
+import MarkdownContent from "../TextEditor/MarkdownContent.vue";
 
 const props = defineProps({
     questionId: {
