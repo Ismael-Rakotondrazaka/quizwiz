@@ -44,7 +44,7 @@ const difficultyColor = computed(() => {
         case "easy":
             return "text-green-700";
         case "medium":
-            return "text-yellow-300";
+            return "text-yellow-700";
         case "hard":
             return "text-red-700";
         default:
