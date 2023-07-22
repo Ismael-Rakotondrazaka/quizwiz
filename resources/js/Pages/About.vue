@@ -1,13 +1,14 @@
 <template>
     <component :is="Layout">
-        <div>About</div>
+        <TheAbout class="my-10" />
     </component>
 </template>
 
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import { computed, ref } from 'vue';
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import GuestLayout from "@/Layouts/GuestLayout.vue";
+import TheAbout from "@/Components/About/TheAbout.vue";
+import { computed } from "vue";
 
 const props = defineProps({
     isAuthenticated: {
