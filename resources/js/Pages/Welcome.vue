@@ -4,6 +4,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import TheHeroSection from "@/Components/Welcome/TheHeroSection.vue";
 import TheFeatureSection from "@/Components/Welcome/TheFeatureSection.vue";
+import TheTestimonialSection from "@/Components/Welcome/TheTestimonialSection.vue";
 
 import { computed } from "vue";
 
@@ -41,6 +42,8 @@ const Layout = computed(() =>
         <TheHeroSection :isAuthenticated="props.isAuthenticated" />
 
         <TheFeatureSection />
+
+        <TheTestimonialSection />
     </component>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
     <section
         id="explore"
-        class="flex items-center justify-center min-h-screen px-8 py-16"
+        class="flex items-center justify-center min-h-screen px-8 py-16 bg-sky-100"
     >
         <div class="container mx-auto">
             <h2 class="mb-8 text-3xl font-bold text-center">
