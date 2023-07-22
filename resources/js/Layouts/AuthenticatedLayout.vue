@@ -35,17 +35,22 @@
         </header>
 
         <slot />
+
+        <TheFooter :isAuthenticated="isAuthenticated" />
     </div>
 </template>
 
 <script setup>
 import NavLink from "@/Components/Header/NavLink.vue";
+import TheFooter from "@/Components/Footer/TheFooter.vue";
 import { usePage } from "@inertiajs/vue3";
 import { computed } from "vue";
 
 const page = usePage();
 
 const isAdmin = computed(() => (page.props.auth.user.role = "admin"));
+
+const isAuthenticated = computed(() => !!page.props.auth.user);
 </script>
 
 <style scoped></style>
