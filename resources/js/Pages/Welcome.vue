@@ -1,8 +1,9 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
+import { Head } from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import TheHeroSection from "@/Components/Welcome/TheHeroSection.vue";
+import TheFeatureSection from "@/Components/Welcome/TheFeatureSection.vue";
 
 import { computed } from "vue";
 
@@ -25,10 +26,12 @@ const props = defineProps({
         type: Boolean,
         required: false,
         default: false,
-    }
+    },
 });
 
-const Layout = computed(() => props.isAuthenticated ? AuthenticatedLayout : GuestLayout);
+const Layout = computed(() =>
+    props.isAuthenticated ? AuthenticatedLayout : GuestLayout
+);
 </script>
 
 <template>
@@ -36,6 +39,8 @@ const Layout = computed(() => props.isAuthenticated ? AuthenticatedLayout : Gues
 
     <component :is="Layout">
         <TheHeroSection :isAuthenticated="props.isAuthenticated" />
+
+        <TheFeatureSection />
     </component>
 </template>
 
