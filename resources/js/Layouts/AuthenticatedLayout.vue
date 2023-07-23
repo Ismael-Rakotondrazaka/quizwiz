@@ -48,7 +48,7 @@ import { computed } from "vue";
 
 const page = usePage();
 
-const isAdmin = computed(() => (page.props.auth.user.role = "admin"));
+const isAdmin = computed(() => page.props.auth.user.role === "admin");
 
 const isAuthenticated = computed(() => !!page.props.auth.user);
 </script>
