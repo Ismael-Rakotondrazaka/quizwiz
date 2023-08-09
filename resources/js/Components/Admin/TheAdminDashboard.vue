@@ -1,15 +1,15 @@
 <template>
     <div class="flex items-center min-h-screen justify-evenly">
-        <div
-            class="w-full p-8 bg-white border rounded-lg shadow-lg border-sky-400 md:w-1/2 lg:w-2/3"
-        >
+        <CustomCard class="w-full md:w-2/3">
             <h1 class="text-2xl font-bold text-center text-gray-800 mb-7">
                 Dashboard:
             </h1>
 
-            <div class="flex items-stretch justify-evenly">
+            <div
+                class="flex flex-wrap items-stretch gap-5 lg:flex-nowrap justify-evenly"
+            >
                 <div
-                    class="min-w-[20rem] py-5 px-7 bg-sky-700 text-white rounded-lg"
+                    class="min-w-[20rem] py-5 px-7 bg-sky-700 text-white rounded-lg lg:min-w-[unset] lg:w-1/3"
                 >
                     <h1 class="text-5xl text-center">Users</h1>
 
@@ -25,7 +25,7 @@
                 </div>
 
                 <div
-                    class="min-w-[20rem] py-5 px-7 bg-sky-700 text-white rounded-lg"
+                    class="min-w-[20rem] py-5 px-7 bg-sky-700 text-white rounded-lg lg:min-w-[unset] lg:w-1/3"
                 >
                     <h1 class="text-5xl text-center">Sessions</h1>
 
@@ -35,7 +35,7 @@
                 </div>
 
                 <div
-                    class="min-w-[20rem] py-5 px-7 bg-sky-700 text-white rounded-lg"
+                    class="min-w-[20rem] py-5 px-7 bg-sky-700 text-white rounded-lg lg:min-w-[unset] lg:w-1/3"
                 >
                     <h1 class="text-5xl text-center">Questions</h1>
 
@@ -50,12 +50,13 @@
                     >
                 </div>
             </div>
-        </div>
+        </CustomCard>
     </div>
 </template>
 
 <script setup>
 import { Link } from "@inertiajs/vue3";
+import CustomCard from "../Commons/CustomCard.vue";
 
 defineProps({
     userCount: {
