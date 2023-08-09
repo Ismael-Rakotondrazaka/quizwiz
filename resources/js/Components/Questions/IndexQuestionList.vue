@@ -1,8 +1,6 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
-        <div
-            class="relative w-full p-8 bg-white border rounded-lg shadow-lg border-sky-400 md:w-1/2 lg:w-2/3"
-        >
+        <CustomCard class="w-full lg:w-2/3">
             <GoBack class="absolute" />
 
             <h1 class="text-2xl font-bold text-center text-gray-800 mb-7">
@@ -39,7 +37,7 @@
                 :paginationLinks="paginationLinks"
                 class="mt-7"
             />
-        </div>
+        </CustomCard>
     </div>
 </template>
 
@@ -49,6 +47,7 @@ import PaginationLinkList from "../Commons/PaginationLinkList.vue";
 import { Link } from "@inertiajs/vue3";
 import PrimaryButton from "../PrimaryButton.vue";
 import GoBack from "../Commons/GoBack.vue";
+import CustomCard from "../Commons/CustomCard.vue";
 
 const props = defineProps({
     questions: {
