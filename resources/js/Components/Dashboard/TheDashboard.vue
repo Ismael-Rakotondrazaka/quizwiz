@@ -1,8 +1,6 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
-        <div
-            class="w-full p-8 bg-white border rounded-lg shadow-lg border-sky-400 md:w-1/2 lg:w-1/2"
-        >
+        <CustomCard class="w-full md:w-2/3 lg:w-1/2">
             <h1 class="text-2xl font-bold text-center text-gray-800 mb-7">
                 Dashboard :
             </h1>
@@ -34,7 +32,7 @@
                     class="mt-7"
                 />
             </div>
-        </div>
+        </CustomCard>
     </div>
 </template>
 
@@ -42,6 +40,7 @@
 import InputLabel from "@/Components/InputLabel.vue";
 import UserSessionList from "@/Components/Sessions/UserSessionList.vue";
 import PaginationLinkList from "@/Components/Commons/PaginationLinkList.vue";
+import CustomCard from "../Commons/CustomCard.vue";
 import SessionDoughnutChart from "../Sessions/SessionDoughnutChart.vue";
 import PrimaryButton from "../PrimaryButton.vue";
 import { Link } from "@inertiajs/vue3";
