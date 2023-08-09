@@ -1,6 +1,6 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
-        <CustomCard class="w-full lg:w-1/2">
+        <CustomCard class="w-full lg:w-2/3">
             <form @submit.prevent="submit">
                 <h1 class="text-2xl font-bold text-center text-gray-800 mb-7">
                     Edit an answer
