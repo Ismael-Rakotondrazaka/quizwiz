@@ -5,7 +5,7 @@
         <UserList
             :users="users"
             :paginationLinks="paginationLinks"
-            class="my-20"
+            class="my-10"
         />
     </AuthenticatedLayout>
 </template>
@@ -14,7 +14,6 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import UserList from "@/Components/Users/UserList.vue";
 import { Head } from "@inertiajs/vue3";
-import { Link } from "@inertiajs/vue3";
 import { computed, defineProps } from "@vue/runtime-core";
 
 const props = defineProps({
