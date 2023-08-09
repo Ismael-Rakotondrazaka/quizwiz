@@ -19,6 +19,9 @@
                     <li>
                         <NavLink routeName="dashboard">Dashboard</NavLink>
                     </li>
+                    <li>
+                        <NavLink routeName="profile.edit">Profile</NavLink>
+                    </li>
                     <li v-if="isAdmin">
                         <NavLink routeName="admin.dashboard">Admin</NavLink>
                     </li>
