@@ -5,7 +5,7 @@
         <TheStarDisplayer :stars="stars" :shown="haveStar" />
 
         <TheDashboard
-            class="my-20"
+            class="my-10"
             :sessions="sessions"
             :paginationLinks="paginationLinks"
             :easyCount="easyCount"

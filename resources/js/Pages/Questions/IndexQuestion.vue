@@ -5,7 +5,7 @@
         <IndexQuestionList
             :questions="questions"
             :paginationLinks="paginationLinks"
-            class="my-20"
+            class="my-10"
         />
     </AuthenticatedLayout>
 </template>

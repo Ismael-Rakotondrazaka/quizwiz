@@ -9,6 +9,6 @@ import { Head } from "@inertiajs/vue3";
 
         <Head title="Create question" />
 
-        <TheCreateQuestionForm class="my-20" />
+        <TheCreateQuestionForm class="my-10" />
     </AuthenticatedLayout>
 </template>

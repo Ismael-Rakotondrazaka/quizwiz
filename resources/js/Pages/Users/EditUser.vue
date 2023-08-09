@@ -2,7 +2,7 @@
     <AuthenticatedLayout>
         <Head :title="title" />
 
-        <TheEditUserForm :user="user" class="my-20" />
+        <TheEditUserForm :user="user" class="my-10" />
     </AuthenticatedLayout>
 </template>
 

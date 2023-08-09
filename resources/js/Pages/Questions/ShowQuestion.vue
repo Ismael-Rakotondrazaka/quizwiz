@@ -2,7 +2,7 @@
     <AuthenticatedLayout>
         <Head :title="title" />
 
-        <ShowQuestionItem :question="question" class="my-20" />
+        <ShowQuestionItem :question="question" class="my-10" />
     </AuthenticatedLayout>
 </template>
 

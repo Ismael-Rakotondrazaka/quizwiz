@@ -6,7 +6,7 @@
             :user-count="userCount"
             :question-count="questionCount"
             :session-count="sessionCount"
-            class="my-20"
+            class="my-10"
         />
     </AuthenticatedLayout>
 </template>
