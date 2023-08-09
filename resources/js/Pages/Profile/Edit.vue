@@ -1,6 +1,7 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import DeleteUserForm from "./Partials/DeleteUserForm.vue";
+import CustomCard from "@/Components/Commons/CustomCard.vue";
 import UpdatePasswordForm from "./Partials/UpdatePasswordForm.vue";
 import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm.vue";
 import { Head } from "@inertiajs/vue3";
@@ -27,29 +28,17 @@ defineProps({
 
         <div class="py-12">
             <div
-                class="w-full mx-auto space-y-6 sm:px-6 lg:px-8 md:w-1/2 lg:w-1/2"
+                class="w-full mx-auto space-y-6 sm:px-6 lg:px-8 md:w-2/3 lg:w-1/2"
             >
-                <div
-                    class="p-4 bg-white border shadow-lg sm:p-8 border-sky-400 sm:rounded-lg"
-                >
-                    <UpdateProfileInformationForm
-                        :must-verify-email="mustVerifyEmail"
-                        :status="status"
-                        class=""
-                    />
-                </div>
+                <UpdateProfileInformationForm
+                    :must-verify-email="mustVerifyEmail"
+                    :status="status"
+                    class=""
+                />
 
-                <div
-                    class="p-4 bg-white border shadow-lg sm:p-8 border-sky-400 sm:rounded-lg"
-                >
-                    <UpdatePasswordForm class="" />
-                </div>
+                <UpdatePasswordForm class="" />
 
-                <div
-                    class="p-4 bg-white border shadow-lg sm:p-8 border-sky-400 sm:rounded-lg"
-                >
-                    <DeleteUserForm class="" />
-                </div>
+                <DeleteUserForm class="" />
             </div>
         </div>
     </AuthenticatedLayout>
