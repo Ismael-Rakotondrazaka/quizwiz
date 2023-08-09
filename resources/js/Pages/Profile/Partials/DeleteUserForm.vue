@@ -1,6 +1,7 @@
 <script setup>
 import CustomCard from "@/Components/Commons/CustomCard.vue";
 import DangerButton from "@/Components/DangerButton.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
@@ -100,28 +101,25 @@ const toggleDeleteAccount = () => {
 
                             <InputError
                                 :message="form.errors.password"
-                                class="mt-2"
+                                class="mt-2 text-left"
                             />
                         </div>
 
                         <div
                             class="flex items-center justify-center w-full mt-5 gap-x-5"
                         >
-                            <button
+                            <DangerButton
                                 :class="{ 'opacity-25': form.processing }"
                                 :disabled="form.processing"
-                                class="block px-4 py-2 tracking-widest text-white uppercase bg-red-400 rounded-full leading-2"
+                                class=""
                                 @click="deleteUser"
                             >
                                 Yes, delete
-                            </button>
+                            </DangerButton>
 
-                            <button
-                                @click="hide"
-                                class="block px-4 py-2 tracking-widest uppercase rounded-full bg-slate-300 leading-2"
-                            >
+                            <SecondaryButton @click="hide" class="">
                                 Cancel
-                            </button>
+                            </SecondaryButton>
                         </div>
                     </div>
                 </template>
