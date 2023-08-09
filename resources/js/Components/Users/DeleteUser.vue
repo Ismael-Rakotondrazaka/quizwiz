@@ -4,10 +4,10 @@
         @apply-show="toggleDeleteUser"
         @apply-hide="toggleDeleteUser"
     >
-        <button class="inline-block px-5 py-3 my-5 bg-red-200 rounded">
+        <DangerButton class="inline-block">
             <fa-icon icon="fa-icon fa-trash-can" class="mr-2" />
             Delete
-        </button>
+        </DangerButton>
 
         <template #popper="{ hide }">
             <div class="px-3 bg-red-400 py-7">
@@ -33,19 +33,19 @@
                 <div
                     class="flex items-center justify-center w-full mt-5 gap-x-5"
                 >
-                    <button
+                    <DangerButton
                         @click="destroyUser"
-                        class="block px-4 py-2 tracking-widest text-white uppercase bg-red-400 rounded-full leading-2"
+                        class=""
                     >
                         Yes, delete
-                    </button>
+                    </DangerButton>
 
-                    <button
+                    <SecondaryButton
                         @click="hide"
-                        class="block px-4 py-2 tracking-widest uppercase rounded-full bg-slate-300 leading-2"
+                        class=""
                     >
                         Cancel
-                    </button>
+                    </SecondaryButton>
                 </div>
             </div>
         </template>
@@ -53,6 +53,8 @@
 </template>
 
 <script setup>
+import DangerButton from "@/Components/DangerButton.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
 import { ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
 

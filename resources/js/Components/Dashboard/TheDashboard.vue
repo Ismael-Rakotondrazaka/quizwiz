@@ -18,12 +18,9 @@
             <div>
                 <InputLabel for="sessions" value="Sessions" />
 
-                <Link :href="route('sessions.create')">
-                    <PrimaryButton class="my-3">
-                        <fa-icon icon="fa-solid fa-plus" class="mr-3" /> New
-                        session
-                    </PrimaryButton>
-                </Link>
+                <PrimaryLink :href="route('sessions.create')" class="my-3">
+                    <fa-icon icon="fa-solid fa-plus" class="mr-3" /> New session
+                </PrimaryLink>
 
                 <UserSessionList :sessions="sessions" />
 
@@ -40,6 +37,7 @@
 import InputLabel from "@/Components/InputLabel.vue";
 import UserSessionList from "@/Components/Sessions/UserSessionList.vue";
 import PaginationLinkList from "@/Components/Commons/PaginationLinkList.vue";
+import PrimaryLink from "@/Components/Links/PrimaryLink.vue";
 import CustomCard from "../Commons/CustomCard.vue";
 import SessionDoughnutChart from "../Sessions/SessionDoughnutChart.vue";
 import PrimaryButton from "../PrimaryButton.vue";

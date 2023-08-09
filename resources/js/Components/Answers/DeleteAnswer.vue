@@ -36,19 +36,13 @@
                 <div
                     class="flex items-center justify-center w-full mt-5 gap-x-5"
                 >
-                    <button
-                        @click="destroyAnswer"
-                        class="block px-4 py-2 tracking-widest text-white uppercase bg-red-400 rounded-full leading-2"
-                    >
+                    <DangerButton @click="destroyAnswer" class="">
                         Yes, delete
-                    </button>
+                    </DangerButton>
 
-                    <button
-                        @click="hide"
-                        class="block px-4 py-2 tracking-widest uppercase rounded-full bg-slate-300 leading-2"
-                    >
+                    <SecondaryButton @click="hide" class="">
                         Cancel
-                    </button>
+                    </SecondaryButton>
                 </div>
             </div>
         </template>
@@ -59,6 +53,8 @@
 import { ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
+import DangerButton from "@/Components/DangerButton.vue";
+import SecondaryButton from "../SecondaryButton.vue";
 
 const props = defineProps({
     question: {

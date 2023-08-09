@@ -59,13 +59,13 @@
                 <div class="flex items-center justify-end mt-4 gap-x-7">
                     <DeleteUser :user="user" />
 
-                    <Link
+                    <PrimaryLink
                         :href="route('users.edit', [user.id])"
-                        class="inline-block px-5 py-3 my-5 rounded bg-sky-200"
+                        class=""
                     >
                         <fa-icon icon="fa-icon fa-pen-to-square" class="mr-2" />
                         Edit
-                    </Link>
+                    </PrimaryLink>
                 </div>
             </div>
 
@@ -90,8 +90,8 @@
 <script setup>
 import InputLabel from "@/Components/InputLabel.vue";
 import DeleteUser from "@/Components/Users/DeleteUser.vue";
+import PrimaryLink from "@/Components/Links/PrimaryLink.vue";
 import PaginationLinkList from "@/Components/Commons/PaginationLinkList.vue";
-import { Link } from "@inertiajs/vue3";
 import { useDateFormat } from "@vueuse/core";
 import SessionList from "@/Components/Sessions/SessionList.vue";
 import CustomCard from "../Commons/CustomCard.vue";

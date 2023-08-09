@@ -37,19 +37,19 @@
                 <div
                     class="flex items-center justify-center w-full mt-5 gap-x-5"
                 >
-                    <button
+                    <DangerButton
                         @click="destroySession"
                         class="block px-4 py-2 tracking-widest text-white uppercase bg-red-400 rounded-full leading-2"
                     >
                         Yes, delete
-                    </button>
+                    </DangerButton>
 
-                    <button
+                    <SecondaryButton
                         @click="hide"
                         class="block px-4 py-2 tracking-widest uppercase rounded-full bg-slate-300 leading-2"
                     >
                         Cancel
-                    </button>
+                    </SecondaryButton>
                 </div>
             </div>
         </template>
@@ -57,6 +57,8 @@
 </template>
 
 <script setup>
+import DangerButton from "@/Components/DangerButton.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
 import { ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
 

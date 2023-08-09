@@ -37,13 +37,13 @@
                 <div class="flex items-center justify-end mt-4 gap-x-7">
                     <DeleteQuestion :question="question" />
 
-                    <Link
+                    <PrimaryLink
                         :href="route('questions.edit', [question.id])"
-                        class="inline-block px-5 py-3 my-5 rounded bg-sky-200"
+                        class="inline-block"
                     >
                         <fa-icon icon="fa-icon fa-pen-to-square" class="mr-2" />
                         Edit
-                    </Link>
+                    </PrimaryLink>
                 </div>
             </div>
 
@@ -76,6 +76,7 @@ import MarkdownContent from "../TextEditor/MarkdownContent.vue";
 import GoBack from "@/Components/Commons/GoBack.vue";
 import { Link } from "@inertiajs/vue3";
 import CustomCard from "../Commons/CustomCard.vue";
+import PrimaryLink from "../Links/PrimaryLink.vue";
 
 const props = defineProps({
     question: {

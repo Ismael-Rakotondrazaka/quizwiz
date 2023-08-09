@@ -25,7 +25,7 @@
                     icon="fa-solid fa-pen-to-square"
                     class="text-3xl text-sky-400"
                 />
-                <span class="sr-only">Delete</span>
+                <span class="sr-only">Edit</span>
             </Link>
         </td>
 
