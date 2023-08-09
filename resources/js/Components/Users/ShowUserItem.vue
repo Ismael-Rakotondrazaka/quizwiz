@@ -1,8 +1,6 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
-        <div
-            class="w-full p-8 bg-white border rounded-lg shadow-lg border-sky-400 md:w-1/2 lg:w-1/2"
-        >
+        <CustomCard class="w-full md:w-1/2 lg:w-1/2">
             <div class="">
                 <h1 class="text-2xl font-bold text-center text-gray-800 mb-7">
                     User {{ user.id }}:
@@ -85,7 +83,7 @@
                     class="mt-7"
                 />
             </div>
-        </div>
+        </CustomCard>
     </div>
 </template>
 
@@ -96,6 +94,7 @@ import PaginationLinkList from "@/Components/Commons/PaginationLinkList.vue";
 import { Link } from "@inertiajs/vue3";
 import { useDateFormat } from "@vueuse/core";
 import SessionList from "@/Components/Sessions/SessionList.vue";
+import CustomCard from "../Commons/CustomCard.vue";
 
 const props = defineProps({
     user: {

@@ -1,8 +1,6 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
-        <div
-            class="w-full p-8 bg-white border rounded-lg shadow-lg border-sky-400 md:w-1/2 lg:w-1/2"
-        >
+        <CustomCard class="w-full md:w-1/2 lg:w-1/2">
             <CustomStepper
                 :steps-count="stepsCount"
                 :currentStep="currentStep"
@@ -17,7 +15,7 @@
                 :questionIdAnswerId="questionIdAnswerId"
                 :currentStep="currentStep"
             />
-        </div>
+        </CustomCard>
     </div>
 </template>
 
@@ -26,6 +24,7 @@ import { defineProps, computed, ref, watch } from "@vue/runtime-core";
 import CustomStepper from "@/Components/Commons/CustomStepper.vue";
 import QuestionList from "../Questions/QuestionList.vue";
 import { router } from "@inertiajs/vue3";
+import CustomCard from "../Commons/CustomCard.vue";
 
 const props = defineProps({
     difficulty: {

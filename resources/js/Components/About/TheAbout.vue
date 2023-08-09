@@ -1,8 +1,6 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
-        <div
-            class="w-full p-3 m-3 bg-white border rounded-lg shadow-lg md:p-5 border-sky-400 md:w-2/3 lg:w-1/2"
-        >
+        <CustomCard class="w-full md:w-2/3 lg:w-1/2">
             <h1
                 class="text-xl font-bold text-center text-gray-800 md:text-2xl mb-7"
             >
@@ -37,10 +35,12 @@
                 Join me as we explore the captivating world of Vue.js and beyond
                 with QuizWiz!
             </p>
-        </div>
+        </CustomCard>
     </div>
 </template>
 
-<script setup></script>
+<script setup>
+import CustomCard from "@/Components/Commons/CustomCard.vue";
+</script>
 
 <style scoped></style>

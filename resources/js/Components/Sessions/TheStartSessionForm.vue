@@ -1,8 +1,6 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
-        <div
-            class="w-full p-8 bg-white border rounded-lg shadow-lg border-sky-400 md:w-1/2 lg:w-1/3"
-        >
+        <CustomCard class="w-full md:w-1/2 lg:w-1/3">
             <form @submit.prevent="startSession">
                 <div>
                     <InputLabel for="difficulty" value="Difficulty" />
@@ -23,7 +21,7 @@
                     <PrimaryButton class="ml-4"> Start </PrimaryButton>
                 </div>
             </form>
-        </div>
+        </CustomCard>
     </div>
 </template>
 
@@ -32,6 +30,7 @@ import PrimaryButton from "../PrimaryButton.vue";
 import InputLabel from "../InputLabel.vue";
 import { ref } from "vue";
 import { router } from "@inertiajs/vue3";
+import CustomCard from "../Commons/CustomCard.vue";
 
 const props = defineProps({
     difficulty: {

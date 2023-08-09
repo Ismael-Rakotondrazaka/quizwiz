@@ -1,8 +1,6 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
-        <div
-            class="w-full p-8 bg-white border rounded-lg shadow-lg border-sky-400 md:w-1/2 lg:w-2/3"
-        >
+        <CustomCard class="w-full md:w-1/2 lg:w-2/3">
             <form @submit.prevent="submit">
                 <h1 class="text-2xl font-bold text-center text-gray-800 mb-7">
                     Create a question
@@ -130,7 +128,7 @@
                     </PrimaryButton>
                 </div>
             </form>
-        </div>
+        </CustomCard>
     </div>
 </template>
 
@@ -141,6 +139,7 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import { useForm } from "@inertiajs/vue3";
 import { computed } from "vue";
 import MarkdownEditor from "../TextEditor/MarkdownEditor.vue";
+import CustomCard from "../Commons/CustomCard.vue";
 
 const form = useForm({
     content: "",
