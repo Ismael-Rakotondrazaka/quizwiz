@@ -1,9 +1,11 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
         <div
-            class="w-full p-8 bg-white border rounded-lg shadow-lg border-sky-400 md:w-1/2 lg:w-1/3"
+            class="w-full p-3 m-3 bg-white border rounded-lg shadow-lg md:p-5 border-sky-400 md:w-2/3 lg:w-1/2"
         >
-            <h1 class="text-2xl font-bold text-center text-gray-800 mb-7">
+            <h1
+                class="text-xl font-bold text-center text-gray-800 md:text-2xl mb-7"
+            >
                 About QuizWiz - Unleashing the Quiz Wizard Within!
             </h1>
 
