@@ -1,8 +1,6 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
-        <div
-            class="relative w-full p-8 bg-white border rounded-lg shadow-lg border-sky-400 md:w-1/2 lg:w-2/3"
-        >
+        <CustomCard class="w-full lg:w-2/3">
             <GoBack class="absolute" />
 
             <div>
@@ -66,7 +64,7 @@
                     Add an answer
                 </Link>
             </div>
-        </div>
+        </CustomCard>
     </div>
 </template>
 
@@ -77,6 +75,7 @@ import IndexAnswerList from "@/Components/Answers/IndexAnswerList.vue";
 import MarkdownContent from "../TextEditor/MarkdownContent.vue";
 import GoBack from "@/Components/Commons/GoBack.vue";
 import { Link } from "@inertiajs/vue3";
+import CustomCard from "../Commons/CustomCard.vue";
 
 const props = defineProps({
     question: {
