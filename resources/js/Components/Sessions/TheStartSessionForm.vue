@@ -2,6 +2,10 @@
     <div class="flex items-center justify-center min-h-screen">
         <CustomCard class="w-full md:w-1/2 lg:w-1/3">
             <form @submit.prevent="startSession">
+                <h1 class="text-2xl font-bold text-center text-gray-800 mb-7">
+                    Select difficulty
+                </h1>
+
                 <div>
                     <InputLabel for="difficulty" value="Difficulty" />
 
