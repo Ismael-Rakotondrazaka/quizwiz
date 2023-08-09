@@ -12,7 +12,7 @@ class AdminDashboardController extends Controller
 {
     public function show()
     {
-        $userCount = User::count();
+        $userCount = User::where('role', '<>', 'admin')->count();
         $questionCount = Question::count();
         $sessionCount = Session::count();
 
