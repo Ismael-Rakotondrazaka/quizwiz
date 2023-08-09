@@ -1,6 +1,6 @@
 <template>
     <div class="flex items-center justify-center min-h-screen">
-        <CustomCard class="w-full md:w-1/2 lg:w-1/2">
+        <CustomCard class="w-full lg:w-1/2">
             <CustomStepper
                 :steps-count="stepsCount"
                 :currentStep="currentStep"
