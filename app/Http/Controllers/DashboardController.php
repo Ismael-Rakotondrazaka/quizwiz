@@ -11,7 +11,7 @@ class DashboardController extends Controller
     {
         $user = request()->user();
 
-        $sessionsPaginated = $user->sessions()->paginate(20);
+        $sessionsPaginated = $user->sessions()->orderBy('created_at', 'desc')->orderBy('id', 'desc')->paginate(20);
         $sessionsPaginated->onEachSide(2)->links();
 
         $easyCount = $user->sessions()->where("difficulty", "easy")->count();
