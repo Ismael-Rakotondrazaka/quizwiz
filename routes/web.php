@@ -53,7 +53,6 @@ Route::prefix('/sessions')->middleware('auth')->group(function () {
     Route::name('sessions.')->group(function () {
         Route::controller(SessionController::class)->group(
             function () {
-                Route::get('/', 'index')->name('index');
                 Route::get('/create', 'create')->name('create');
                 Route::post('/create', 'start')->name('start');
                 Route::post('/store', 'store')->name('store');
